@@ -1,0 +1,53 @@
+POST  http://localhost:3000/api/auth HTTP/1.1
+Content-Type: application/json
+
+{
+  "userName":"victor",
+  "email": "v@v.v",
+  "password": "0704"
+}
+###
+
+POST  http://localhost:3000/api/auth/login HTTP/1.1
+Content-Type: application/json
+
+{
+  "password":"0704",
+  "email": "josiah@gmail.com"
+}
+###
+GET http://localhost:3000 HTTP/1.1
+
+###
+
+GET http://localhost:3000/api/task HTTP/1.1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvayI6dHJ1ZSwidU5hbWUiOiJ2aWN0b3IiLCJpZCI6IjYyM2Y2ZGYzYjc4N2RiNDI3ZDkzMGYwZiIsImlhdCI6MTY0ODY0MjA0MX0.8c0afWlCubWtDwwVjSTt0fx2ssHK9kEtNrzBNuaL-NE
+
+
+###
+POST  http://localhost:3000/api/task HTTP/1.1
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1TmFtZSI6Impvc2lhaCIsImlkIjoiNjI0MmZjNjA2ZTY4Y2QyMjA2ZjRlYzdhIiwiaWF0IjoxNjQ4NjQxNDA4fQ.m7Py0c4xIlpOkVWxN7m9TzU5V1s53DMIm_OyEcf7pho
+
+{
+ "name": "name",
+      "description": "description",
+      "uId": "623f6df3b787db427d930f0f",
+      "done": false,
+      "date": "",
+      "endDate": "",
+      "reminder": false
+}
+
+###
+PUT  http://localhost:3000/api/task/623f4e1735d9cf0948325cbb HTTP/1.1
+Content-Type: application/json
+
+{
+"name":"Task new todo"
+
+}
+
+###
+DELETE   http://localhost:3000/api/task/623f5b36f1d9b04d22195f07 HTTP/1.1
+Content-Type: application/json
