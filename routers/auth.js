@@ -37,7 +37,6 @@ auth.post("/register", async (req, res) => {
 
 auth.post("/login", async (req, res) => {
   const { email, password } = req.body;
-  console.log(req.body);
   if (email === "") return res.send({ ok: false, error: "email not provided" });
   if (password === "")
     return res.send({ ok: false, error: "password not provided" });
@@ -51,14 +50,13 @@ auth.post("/login", async (req, res) => {
         uName: user.userName,
         id: user.id,
       },
-      "taskToken"
+      process.env.tokenSecrete
     );
 
     res.send({ ok: true, token: token });
   } catch (error) {
-    res.send({ ok: false, error: error + "na mongodb oo" });
+    res.send({ ok: false, error: error });
   }
 });
 
 module.exports = auth;
-//Run app, then load http://localhost:port in a browser to see the output.

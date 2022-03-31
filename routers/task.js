@@ -1,6 +1,7 @@
 const express = require("express");
 const { default: mongoose } = require("mongoose");
 const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 const task = express.Router();
 
@@ -19,7 +20,7 @@ const Tasks = mongoose.model(
 function auth(req, res, next) {
   try {
     const responseToken = req.headers.authentication;
-    const decode = jwt.verify(responseToken, "taskToken");
+    const decode = jwt.verify(responseToken, process.env.tokenSecrete);
     res.locals.validateUser = { status: true, decode: decode };
     next();
   } catch (error) {
