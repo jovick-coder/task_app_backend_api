@@ -37,12 +37,12 @@ auth.post("/register", async (req, res) => {
 
 auth.post("/login", async (req, res) => {
   const { email, password } = req.body;
-  console.log(req.body);
   if (email === "") return res.send({ ok: false, error: "email not provided" });
   if (password === "")
     return res.send({ ok: false, error: "password not provided" });
+
   try {
-    const user = await Users.findOne({ email: email, password: password });
+    const user = await Users.findOne({ email, password });
     if (!user) return res.send({ ok: false, error: "invalid email/password " });
 
     const token = jwt.sign(
@@ -56,7 +56,7 @@ auth.post("/login", async (req, res) => {
 
     res.send({ ok: true, token: token });
   } catch (error) {
-    res.send({ ok: false, error: error + "na mongodb oo" });
+    res.send({ ok: false, error: "MongoDb -->" + error });
   }
 });
 
