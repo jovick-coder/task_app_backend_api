@@ -6,22 +6,11 @@ const cors = require("cors");
 require("dotenv").config();
 
 const app = express();
-
 app.use(
   cors({
-    origin: "https://jovick-coder-task-app.netlify.app",
-    // "Access-Control-Allow-Origin": "*",
+    origin: "*",
   })
 );
-app.use(function (req, res, next) {
-  res.header(
-    "Access-Control-Allow-Origin",
-    "https://jovick-coder-task-app.netlify.app"
-  );
-  res.header("Access-Control-Allow-Headers", "X-Requested-With");
-  next();
-});
-
 app.use(express.json());
 
 app.get("/", (req, res) => {
