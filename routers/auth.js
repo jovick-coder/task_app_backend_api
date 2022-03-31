@@ -51,7 +51,7 @@ auth.post("/login", async (req, res) => {
         uName: user.userName,
         id: user.id,
       },
-      "taskToken"
+      process.env.tokenSecrete
     );
 
     res.send({ ok: true, token: token });
@@ -61,4 +61,3 @@ auth.post("/login", async (req, res) => {
 });
 
 module.exports = auth;
-//Run app, then load http://localhost:port in a browser to see the output.

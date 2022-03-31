@@ -1,18 +1,16 @@
+const cors = require("cors");
 const express = require("express");
+require("dotenv").config();
 const { default: mongoose } = require("mongoose");
 const auth = require("./routers/auth");
 const task = require("./routers/task");
-const cors = require("cors");
-require("dotenv").config();
 
 const app = express();
-
 app.use(
   cors({
-    Origin: "*",
+    origin: "*",
   })
 );
-
 app.use(express.json());
 
 app.get("/", (req, res) => {
@@ -22,8 +20,12 @@ app.get("/", (req, res) => {
 app.use("/api/auth", auth);
 app.use("/api/task", task);
 
-mongoose.connect("mongodb://localhost:27017/task-app", () => {
-  app.listen(process.env.PORT || 3000, () => {
-    console.log("app listening on port 3000!");
+const port = process.env.PORT || 3000;
+mongoose.connect(process.env.dev_db_connect, () => {
+  app.listen(port, () => {
+    console.log("app listening on port " + port);
   });
 });
+
+// task-app-user
+// coRL0fXedw3pVSG0
