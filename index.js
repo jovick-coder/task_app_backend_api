@@ -21,7 +21,7 @@ app.use("/api/auth", auth);
 app.use("/api/task", task);
 
 const port = process.env.PORT || 3000;
-mongoose.connect(process.env.dev_db_connect, () => {
+mongoose.connect(process.env.pro_db_connect, () => {
   app.listen(port, () => {
     console.log("app listening on port " + port);
   });
